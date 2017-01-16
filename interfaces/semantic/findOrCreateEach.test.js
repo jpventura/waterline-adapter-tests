@@ -30,6 +30,7 @@ describe('Semantic Interface', function() {
         first_name: 'NOT IN THE SET',
         type: testName
       }], function(err, results) {
+        if(err) return done(err);
         assert.ifError(err);
         assert.strictEqual(results.length, 1);
         done();
@@ -41,6 +42,7 @@ describe('Semantic Interface', function() {
         first_name: 'NOT IN THE SET',
         type: testName
       }], function(err, results) {
+        if(err) return done(err);
         assert.ifError(err);
         assert.strictEqual(results.length, 1);
         done();
@@ -49,6 +51,7 @@ describe('Semantic Interface', function() {
 
     it('should only have a single record for keys that exist', function(done) {
       Semantic.User.find({ first_name: 'NOT IN THE SET' }, function(err, users) {
+        if(err) return done(err);
         assert.strictEqual(users.length, 1);
         done();
       });
@@ -56,6 +59,7 @@ describe('Semantic Interface', function() {
 
     it('should fail when only one arg is specified', function(done) {
       Semantic.User.findOrCreateEach([], function(err) {
+        if(err) return done(err);
         assert(err);
         done();
       });
@@ -63,6 +67,7 @@ describe('Semantic Interface', function() {
 
     it('should return model instances', function(done) {
       Semantic.User.findOrCreateEach(['type', 'first_name'], [{ type: testName, first_name: 'NOT IN THE SET' }], function(err, users) {
+        if(err) return done(err);
         assert.ifError(err);
         assert(users[0].id);
         assert.equal(typeof users[0].fullName, 'function');

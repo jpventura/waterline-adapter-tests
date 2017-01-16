@@ -54,6 +54,7 @@ describe('Semantic Interface', function() {
 
       it('should update model attributes', function(done) {
         Semantic.User.update({ type: 'update' }, { last_name: 'updated' }, function(err, users) {
+          if(err) return done(err);
           assert.ifError(err);
           assert(Array.isArray(users));
           assert.strictEqual(users.length, 10);
@@ -64,6 +65,7 @@ describe('Semantic Interface', function() {
 
       it('should return model instances', function(done) {
        Semantic. User.update({ type: 'update' }, { last_name: 'updated again' }).exec(function(err, users) {
+          if(err) return done(err);
           assert.ifError(err);
           assert(users[0].id);
           assert.strictEqual(users[0].first_name.indexOf('update_user'), 0);
@@ -78,6 +80,7 @@ describe('Semantic Interface', function() {
 
       it('should work with just an ID passed in', function(done) {
         Semantic.User.update(id, { first_name: 'foo' }).sort('first_name').exec(function(err, users) {
+          if(err) return done(err);
           assert.ifError(err);
           assert.equal(users[0].first_name, 'foo');
           done();
@@ -86,6 +89,7 @@ describe('Semantic Interface', function() {
 
       it('should work with an empty object', function(done) {
         Semantic.User.update({}, { type: 'update all' }, function(err, users) {
+          if(err) return done(err);
           assert.ifError(err);
           assert.strictEqual(users.length, 10);
           assert.equal(users[0].type, 'update all');
@@ -103,6 +107,7 @@ describe('Semantic Interface', function() {
 
       it('should update model attributes without supplying required fields', function(done) {
         Semantic.Thing.update(thingId, { description: 'An updated thing' }, function(err, things) {
+          if(err) return done(err);
           assert.ifError(err);
           assert(Array.isArray(things));
           assert.strictEqual(things.length, 1);
@@ -146,6 +151,7 @@ describe('Semantic Interface', function() {
 
       it('should allow the record to be found', function(done) {
         Semantic.User.find({ type: 'updateFind' }, function(err, users) {
+          if(err) return done(err);
           assert.ifError(err);
           assert.strictEqual(users.length, 2);
           assert.equal(users[0].last_name, 'Updated Find');
