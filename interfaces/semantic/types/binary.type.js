@@ -3,7 +3,7 @@ var assert = require('assert'),
 
 describe('Semantic Interface', function() {
 
-  describe.skip('Binary Type', function() {
+  describe('Binary Type', function() {
     describe('with valid data', function() {
 
       /////////////////////////////////////////////////////
