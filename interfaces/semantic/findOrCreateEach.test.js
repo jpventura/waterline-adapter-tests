@@ -37,7 +37,7 @@ describe('Semantic Interface', function() {
       });
     });
 
-    it('should find a user that does exist', function(done) {
+    it.skip('should find a user that does exist', function(done) {
       Semantic.User.findOrCreateEach(['type', 'first_name'], [{
         first_name: 'NOT IN THE SET',
         type: testName
@@ -57,7 +57,7 @@ describe('Semantic Interface', function() {
       });
     });
 
-    it('should fail when only one arg is specified', function(done) {
+    it.skip('should fail when only one arg is specified', function(done) {
       Semantic.User.findOrCreateEach([], function(err) {
         if(err) return done(err);
         assert(err);
@@ -65,7 +65,7 @@ describe('Semantic Interface', function() {
       });
     });
 
-    it('should return model instances', function(done) {
+    it.skip('should return model instances', function(done) {
       Semantic.User.findOrCreateEach(['type', 'first_name'], [{ type: testName, first_name: 'NOT IN THE SET' }], function(err, users) {
         if(err) return done(err);
         assert.ifError(err);
